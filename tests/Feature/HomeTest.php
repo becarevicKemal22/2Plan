@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -13,8 +14,10 @@ class HomeTest extends TestCase
      */
     public function testReturnsValidResponse()
     {
-        $response = $this->get('/');
+        $response = $this->get('/home');
 
-        $response->assertStatus(200);
+        $response = $this->actingAs($this->user())->get('/home');
+        $response->assertOk();
+
     }
 }
