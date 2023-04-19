@@ -10,6 +10,13 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
     use RefreshDatabase;
+
+    public function setUp(): void{
+        parent::setUp();
+
+        $this->withoutVite();
+    }
+
     public function user(){
         return User::factory()->create();
     }
