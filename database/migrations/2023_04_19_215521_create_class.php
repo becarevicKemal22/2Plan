@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('day');
             $table->integer('classNumber');
             $table->string('subject');
-            $table->string('professor');
+            $table->unsignedBigInteger('professor');
         });
 
     }
