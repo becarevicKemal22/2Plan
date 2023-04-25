@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('subject-classes', \App\Http\Controllers\SubjectClassController::class);
+    Route::resource('school-classes', \App\Http\Controllers\SchoolClassController::class);
 });
+
+Auth::routes();
