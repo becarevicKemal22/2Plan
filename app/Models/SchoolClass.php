@@ -9,6 +9,10 @@ class SchoolClass extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $table = 'school_classes';
+
     protected $fillable = [
         "natOrIB",
         "department",
