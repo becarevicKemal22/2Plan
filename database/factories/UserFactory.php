@@ -35,4 +35,16 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    public function student(): Factory{
+        return $this->state(fn (array $attributes) => [
+            'role' => "student",
+        ]);
+    }
+
+    public function professor(): Factory{
+        return $this->state(fn (array $attributes) => [
+            'role' => "professor",
+        ]);
+    }
 }
