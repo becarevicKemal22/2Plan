@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('school_classes', function (Blueprint $table) {
-            $table->unsignedBigInteger('classMaster');
+            $table->unsignedBigInteger('classMaster')->nullable();
             $table->foreign('classMaster')->references('id')->on('users');
         });
     }
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('school_classes', function (Blueprint $table) {
             $table->dropForeign(['classMaster']);
-            $table->dropColumn(['classMaster']);
+            $table->dropColumn('classMaster');
         });
     }
 };

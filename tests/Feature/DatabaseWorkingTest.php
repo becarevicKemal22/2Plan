@@ -34,6 +34,12 @@ class DatabaseWorkingTest extends TestCase
 
     public function testSchoolClassTable(){
         $this->assertDatabaseEmpty("school_classes");
+        $user = new User();
+        $user->name = "Kemal";
+        $user->surname = "Becarevic";
+        $user->email = "kemal.bacarevic@2gimnazija.edu.ba";
+        $user->password = bcrypt("test-123");
+        $user->save();
         $schoolClassFields = ["natOrIB" => true, "department" => "4", "year" => 3, "major" => "IT", "classCode" => uniqid()];
         $schoolClass = SchoolClass::make($schoolClassFields);
         $schoolClass->save();
@@ -52,7 +58,7 @@ class DatabaseWorkingTest extends TestCase
 
         $classroom = Classroom::create(['classroomNumber' => 101]);
 
-        $schoolClass = SchoolClass::create(['natOrIB' => true, 'department' => '4', 'year' => 3, 'major' => 'IT', 'classCode' => uniqid()]);
+        $schoolClass = SchoolClass::create(['natOrIB' => true, 'department' => '4', 'year' => 3, 'major' => 'IT', 'classCode' => uniqid(), 'classMaster' => 1]);
 
         $this->assertDatabaseEmpty("classes");
         $classFields = ["day" => "Monday", "classNumber" => 1, "subject" => "Math", "professor" => 1, "schoolClass" => 1, "classroom" => 1];
