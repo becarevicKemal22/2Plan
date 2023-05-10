@@ -18,6 +18,7 @@ class UserTableTest extends TestCase
     {
         $user = new User();
         $user->name = "Kemal";
+        $user->surname = "Becarevic";
         $user->email = "kemal.bacarevic@2gimnazija.edu.ba";
         $user->password = bcrypt("test-123");
         $user->save();
